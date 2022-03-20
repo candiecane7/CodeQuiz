@@ -1,30 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Coding Quiz Challenge</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title> Ultimate Taylor Swift Challenge</title>
 </head>
+
 <body>
     <header>
-        <div>View High Scores</div>
+        <div class="highScore">View High Scores</div>
         <div class="timer"></div>
     </header>
-    <main>
-        <div>
-            <h1>
-                Coding Quiz Challenge
+    <main class="main">
+        <div class="main-content">
+            <h1 class="title">
+                Ultimate Taylor Swift Challenge
             </h1>
-            <p>
-                Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score and time by 10 seconds!
+            <p class="para">
+                Try to answer the following Taylor Swift-related questions within the time limit. Keep in mind that
+                incorrect
+                answers will penalize your score and time by 10 seconds!
             </p>
-            <button class="start-btn">
-                Start
-            </button>
+            <div class="start-btn-div">
+                <button class="start-btn">
+                    Start
+                </button>
+            </div>
+        </div>
+        <div class="questions-container hide">
+            <h1 class="questions-section">
+            </h1>
+            <div class="buttons">
+                <!-- <button class="btn" id="btn0">A.
+                    <span id="choice0"></span></button>
+                <button class="btn" id="btn1">B.
+                    <span id="choice1"></span></button>
+                <button class="btn" id="btn2">C.
+                    <span id="choice2"></span></button>
+                <button class="btn" id="btn3">D.
+                    <span id="choice3"></span></button> -->
+            </div>
         </div>
     </main>
 
-<script src="./assets/js/js.js"  ></script>
+    <script src="./assets/js/js.js"></script>
 </body>
+
 </html>

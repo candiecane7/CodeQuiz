@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: pink;
+    color: purple;
+    padding: 30px;
+}
+.highScore,
+.timer {
+    font-size: 20px;
+}
+.main {
+    display: flex;
+    justify-content: center;
+}
+.para,
+.title,
+.start-btn-div {
+    display: flex;
+    justify-content: center;
+}
+.para{
+    font-size: 20px;
+}
+.hide {
+    display: none;
+}
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.btn {
+    text-align: left;
+    border-radius: 7px;
+    width: 100%;
+    font-size: 1.8rem;
+    border: 2px solid darkorange;
+    display: flex;
+    margin: 5px;
+}
+.questions-container {
+    border: 2px solid black;
+    margin: 40px;
+    border-radius: 5px;
+    max-width: 900px;
+    padding: 0 2rem;
+}
