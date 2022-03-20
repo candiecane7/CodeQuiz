@@ -1,13 +1,22 @@
 //Grabbing elements to display
 var timerCount = document.querySelector(".timer");
 var startbtn = document.querySelector(".start-btn");
-var highScoreClick = document.querySelector(".highscore");
-var timeLeft = 75;
+var highScoreClick = document.querySelector(".highScore");
+var timeLeft = 60;
 var mainContent = document.querySelector(".main-content");
 var qId = 0;
 var questionsContainer = document.querySelector(".questions-container");
 var btnContainer = document.querySelector(".buttons");
 var score = 0;
+var scoreHolder = document.querySelector(".score")
+var finalContainer = document.querySelector(".final-container");
+var finalScore = document.querySelector(".score-container");
+var saveBtn = document.querySelector("#submit");
+var viewHigh = document.querySelector(".last-container");
+var id = 0;
+var saveThis = [];
+
+
 
 startbtn.addEventListener("click", timerBegin);
 
@@ -72,50 +81,81 @@ var questions = [
                 { text: "11", isTrue: true }
             ]
     }
+    // {
+    //     question: "What is Taylor Swift's lucky number?",
+    //     choices: ["7", "13", "3", "33"],
+    //     answer: "13"
+    // },
+    // {
+    //     question: "What was the name of the first song Taylor Swift ever wrote?",
+    //     choices: ["Lucky You", "Our Song", "Tim McGraw", "Come Clean"],
+    //     answer: "Lucky You"
+    // }
 ]
 
 //Once start is clicked, start showing questions one at a time
 var questionsStart = function () {
     //clear page of title and paragraph
     mainContent.style.display = "none";
+    scoreHolder.textContent = "Score: " + score;
     questionsContainer.classList.remove("hide");
-    //reset choices
-
-    // for loop that will loop over the questions
-    // for (i = 0; i < questions.length; i++) {
+    if(timeLeft > 0 && qId < 4){
         var questionEl = document.querySelector(".questions-section")
         questionEl.textContent = (questions[qId].question);
-
         for (x = 0; x < 4; x++) {
             var choice = document.createElement("button");
             choice.setAttribute("class", "btn");
             choice.setAttribute("value", questions[qId].choices[x].isTrue);
             choice.textContent = questions[qId].choices[x].text;
-            btnContainer.appendChild(choice);  
+            btnContainer.appendChild(choice);
+            choice.onclick = answerCheck;
         };
-        choice.addEventListener("click", function(event){
-            if (event.target.value === true) {
-                timeLeft += 10;
-            } else {
-                timeLeft -= 10;
-            }
-        })
         
-    // }
-    // if(timeLeft>0){
-    // questionsStart();
-    // }else {
-    //     endGame();
-    // }
+    
+    }else {
+        endGame();
+    }
+
 }
 
+
 var answerCheck = function (event) {
-    if (event.target.value === true) {
+    if (event.target.value == "true") {
         timeLeft += 10;
+        score += 10;
     } else {
         timeLeft -= 10;
     }
+    // choice.setAttribute("class", "hide");
+    qId++;
+    // debugger;
+    // choice.remove("button");
+     questionsStart();
 }
 var endGame = function () {
+    questionsContainer.style.display = "none";
+    timerCount.style.display = "none";
+    finalContainer.classList.remove("hide");
+    finalScore.textContent = "Final Score: " + score;
 
+    
+
+    saveBtn.addEventListener("click", function(){
+        id += 1;
+        var nameSave = document.querySelector("input[name='name']").value;
+        var scoreSave = score;
+         saveThis.push(nameSave, scoreSave, id);
+         localStorage.setItem("highscore", JSON.stringify(saveThis));
+})
+
+}
+
+
+highScoreClick.addEventListener("click", getHighScores)
+
+var getHighScores = function(){
+ finalContainer.classList.remove("hide")
+ mainContent.style.display = "none";
+ finalContainer.style.display = "none";
+ questionsContainer.style.display = "none";
 }

@@ -43,10 +43,13 @@ header {
 .btn:hover {
     border: 2px solid darkred;
 }
-.questions-container {
+.questions-container, .final-container {
     border: 2px solid black;
     margin: 40px;
     border-radius: 5px;
     max-width: 900px;
     padding: 0 2rem;
+}
+.score-container, .enter-name {
+    font-size: 20px;
 }
