@@ -40,6 +40,9 @@ header {
     display: flex;
     margin: 5px;
 }
+.btn:hover {
+    border: 2px solid darkred;
+}
 .questions-container {
     border: 2px solid black;
     margin: 40px;
