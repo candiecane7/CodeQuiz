@@ -15,6 +15,8 @@ var saveBtn = document.querySelector("#submit");
 var viewHigh = document.querySelector(".last-container");
 var id = 0;
 var saveThis = [];
+var playAgain = document.querySelector(".play-again-btn");
+var highScoreClick2 = document.querySelector(".highScore2");
 
 
 
@@ -157,6 +159,7 @@ var endGame = function () {
     timerCount.style.display = "none";
     finalContainer.classList.remove("hide");
     finalScore.textContent = "Final Score: " + score;
+    timeLeft.value = 60;
 }
 
     var saveStats = function () {
@@ -165,14 +168,15 @@ var endGame = function () {
         console.log(localSaved);
         if (localSaved) {
             saveThis.push(localSaved);
+            console.log(saveThis)
             var nameSave = document.querySelector("input[name='name']").value;
             var scoreSave = score;
-            saveThis.push(nameSave, scoreSave);
+            saveThis.push([nameSave, scoreSave]);
             localStorage.setItem("highscore", JSON.stringify(saveThis));
         } else {
             var nameSave = document.querySelector("input[name='name']").value;
             var scoreSave = score;
-            saveThis.push(nameSave, scoreSave);
+            saveThis.push([nameSave, scoreSave]);
             localStorage.setItem("highscore", JSON.stringify(saveThis));
         }
 
@@ -184,9 +188,16 @@ var endGame = function () {
         finalContainer.style.display = "none";
         questionsContainer.style.display = "none";
         viewHigh.classList.remove("hide");
+        var data = document.createElement("ul");
+        data.setAttribute("class", "high-list")
+        for (i=0; i<saveThis.length; i++){
+
+        }
 
 
     }
 
     highScoreClick.addEventListener("click", getHighScores);
+    highScoreClick2.addEventListener("click", getHighScores);
     saveBtn.addEventListener("click", saveStats)
+    // playAgain.addEventListener("click", timerBegin);
