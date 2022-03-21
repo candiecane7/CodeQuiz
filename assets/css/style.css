@@ -1,11 +1,14 @@
 * {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
+body {
+    background-color: pink;
+}
 
 header {
     display: flex;
     justify-content: space-between;
-    background-color: pink;
+    background-color: white;
     color: purple;
     padding: 30px;
 }
@@ -40,7 +43,7 @@ header {
     border-radius: 7px;
     width: 100%;
     font-size: 1.8rem;
-    border: 2px solid darkorange;
+    border: 2px solid rgb(206, 67, 90);
     display: flex;
     margin: 5px;
 }
@@ -53,6 +56,7 @@ header {
     border-radius: 5px;
     max-width: 900px;
     padding: 0 2rem;
+    background-color: white;
 }
 .score-container, .enter-name {
     font-size: 20px;
@@ -62,5 +66,8 @@ header {
     padding: 5px;
 }
 .highScore:hover {
-    color: white;
+    color: rgb(73, 69, 69);
+}
+.questions-section {
+    font-size: 25px;
 }

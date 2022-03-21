@@ -14,7 +14,8 @@ var finalScore = document.querySelector(".score-container");
 var saveBtn = document.querySelector("#submit");
 var viewHigh = document.querySelector(".last-container");
 var id = 0;
-var saveThis = [];
+var localSaved = JSON.parse(localStorage.getItem("highscore"))|| [];
+var scoreHold = document.querySelector(".score-hold")
 var playAgain = document.querySelector(".play-again-btn");
 var highScoreClick2 = document.querySelector(".highScore2");
 
@@ -164,21 +165,23 @@ var endGame = function () {
 
     var saveStats = function () {
         // id += 1;
-        var localSaved = JSON.parse(localStorage.getItem("highscore"));
-        console.log(localSaved);
-        if (localSaved) {
-            saveThis.push(localSaved);
-            console.log(saveThis)
+        
+        // console.log(localSaved);
+        // if (localSaved) {
+        //     saveThis.push(localSaved);
+        //     console.log(saveThis)
             var nameSave = document.querySelector("input[name='name']").value;
             var scoreSave = score;
-            saveThis.push([nameSave, scoreSave]);
-            localStorage.setItem("highscore", JSON.stringify(saveThis));
-        } else {
-            var nameSave = document.querySelector("input[name='name']").value;
-            var scoreSave = score;
-            saveThis.push([nameSave, scoreSave]);
-            localStorage.setItem("highscore", JSON.stringify(saveThis));
-        }
+          var newSave = {name: nameSave, score: scoreSave}
+            localSaved.push(newSave);
+        //     localStorage.setItem("highscore", JSON.stringify(saveThis));
+        // } else {
+        //     var nameSave = document.querySelector("input[name='name']").value;
+        //     var scoreSave = score;
+        //     var newSave = {name: nameSave, score: scoreSave}
+        //     saveThis.push(newSave);
+            localStorage.setItem("highscore", JSON.stringify(localSaved));
+        // }
 
     }
 
@@ -188,9 +191,16 @@ var endGame = function () {
         finalContainer.style.display = "none";
         questionsContainer.style.display = "none";
         viewHigh.classList.remove("hide");
-        var data = document.createElement("ul");
-        data.setAttribute("class", "high-list")
-        for (i=0; i<saveThis.length; i++){
+        // debugger;
+        for (i=0; i<localSaved.length; i++){
+            // var localSaved = 
+            console.log(localSaved);
+            var listHolder = document.createElement("ul");
+            listHolder.setAttribute("class", "high-list");
+            scoreHold.appendChild(listHolder);
+            var listScore = document.createElement("li");
+            listScore.textContent = localSaved[i].name + localSaved[i].score;
+            listHolder.appendChild(listScore);
 
         }
 
