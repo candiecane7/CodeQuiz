@@ -199,7 +199,7 @@ var endGame = function () {
             listHolder.setAttribute("class", "high-list");
             scoreHold.appendChild(listHolder);
             var listScore = document.createElement("li");
-            listScore.textContent = localSaved[i].name + localSaved[i].score;
+            listScore.textContent ="Name: " + localSaved[i].name + " Score: " + localSaved[i].score;
             listHolder.appendChild(listScore);
 
         }
